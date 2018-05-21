@@ -1,0 +1,87 @@
+﻿@model ProjectPlatform.Models.ProjectCommentsViewModels
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Comment";
+}
+
+<h2 style="font-family:Times New Roman;">Project Details Summary</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.StudentEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.StudentEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Class)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Class)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Grade)
+        </dd>
+
+        <dt>
+
+    </dl>
+</div>
+
+<br>
+<h4>Leave a Comment:</h4>
+<form role="form" method="post">
+    <div class="form-group">
+        <textarea class="form-control" rows="3" required id="Content" name="Content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<br>
+
+<p>Comments:</p><br>
+<div class="row">
+
+    @foreach (var item in Model.Comments)
+    {
+        <div class="col-sm-10">
+            <h4>@Html.DisplayFor(modelItem => item.UserName) <small>@Html.DisplayFor(modelItem => item.PostDate)</small></h4>
+            <p style="font-family:Times New Roman; font-size:large">@Html.DisplayFor(modelItem => item.Content)</p>
+            <br>
+        </div>
+    }
+</div>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Project Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @Html.Partial("_LoggedTabs")
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; @DateTime.Now.Year TOR All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <div style='text-align: right;'>
+
+                            <a href='https://www.linkedin.com' target='_blank' title='Visit Us On Linkedin'>
+                                <img src="/Images/linkedin.png" style='border: 0px;' alt='Visit Us On Linkedin' height='40px' width='40px' />
+                            </a>
+                            <a href='https://twitter.com/twitter' target='_blank' title='Visit Us On Twitter'>
+                                <img src="/Images/twitter.png" style='border: 0px;' alt='Visit Us On Twitter' height='40px' width='40px' />
+                            </a>
+                            <a href='https://www.facebook.com/' target='_blank' title='Visit Us On Facebook'>
+                                <img src="/Images/facebook.png" style='border: 0px;' alt='Visit Us On Facebook' height='40px' width='40px' />
+                            </a>
+                            <a href='https://plus.google.com/' target='_blank' title='Visit Us On Google Plus'>
+                                <img src="/Images/googleplus.png" style='border: 0px;' alt='Visit Us On Google Plus' height='40px' width='40px' />
+                            </a>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

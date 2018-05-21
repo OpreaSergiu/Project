@@ -1,0 +1,73 @@
+﻿@model ProjectPlatform.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Account Info</h2>
+
+@if (Model.AccountInfo.CNP == null)
+{
+<form class="form" method="post">
+    <input class="form-control" type="hidden" id="Id" name="Id" runat="server" value=@Model.AccountInfo.Id />
+    @if (Model.AccountInfo.Name == null)
+    {
+        <label>Name: </label>
+        <br />
+        <input class="form-control" type="text" id="Name" name="Name" runat="server" />
+        <br />
+    }
+    else
+    {
+        <input class="form-control" type="hidden" id="Name" name="Name" runat="server" value=@Model.AccountInfo.Name />
+    }
+    <label>Address: </label>
+    <br />
+    <input class="form-control" type="text" id="Address" name="Address" runat="server" />
+    <br />
+    <label>CNP: </label>
+    <br />
+    <input class="form-control" type="text" id="CNP" name="CNP" runat="server" />
+    <br />
+    <button type="submit" class="btn">Submit</button>
+</form>
+}
+else
+{
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Name:</dt>
+            <dd>
+                @Model.AccountInfo.Name
+            </dd>
+            <dt>Address:</dt>
+            <dd>
+                @Model.AccountInfo.Address
+            </dd>
+            <dt>Email:</dt>
+            <dd>
+                @Model.AccountInfo.Email
+            </dd>
+            <dt>Role:</dt>
+            <dd>
+                @Model.AccountInfo.Role
+            </dd>
+            <dt>CNP:</dt>
+            <dd>
+                @Model.AccountInfo.CNP
+            </dd>
+            <dt>Password:</dt>
+            <dd>
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+            </dd>
+        </dl>
+    </div>
+}
